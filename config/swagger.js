@@ -1,4 +1,4 @@
-const swaggerJSDoc = require('swagger-jsdoc'); // Asegúrate de importar esto
+const swaggerJSDoc = require('swagger-jsdoc'); 
 const swaggerUi = require('swagger-ui-express');
 
 const swaggerDefinition = {
@@ -10,7 +10,7 @@ const swaggerDefinition = {
   },
   servers: [
     {
-      url: 'http://localhost:3000',
+      url: 'http://localhost:5000',
       description: 'Servidor de desarrollo',
     },
   ],

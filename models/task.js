@@ -1,6 +1,6 @@
 const { DataTypes } = require('sequelize');
 const sequelize = require('../config/database');
-const User = require('./user'); // Importar el modelo de usuario para las relaciones
+const User = require('./user'); 
 
 const Task = sequelize.define('Task', {
   id_tarea: {

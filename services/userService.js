@@ -1,7 +1,7 @@
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const userDataAccess = require('../data_access/userDataAccess');
-const mail_sender = require('../config/mail_sender'); 
+const transporter = require('../config/mail_sender');
 
 const registerUser = async (nombre, correo, contraseña) => {
   const usuarioExistente = await userDataAccess.getUserByEmail(correo);
@@ -64,7 +64,8 @@ const requestPasswordReset = async (correo) => {
 
   const token = jwt.sign({ id_usuario: usuario.id_usuario }, process.env.JWT_SECRET, { expiresIn: '1h' });
 
-  const resetLink = `http://localhost:3000/api/users/reset-password?token=${token}`;
+  const resetLink = `http://localhost:5000/api/users/reset-password?token=${token}`;
+
   await transporter.sendMail({
     from: process.env.EMAIL_USER,
     to: correo,
